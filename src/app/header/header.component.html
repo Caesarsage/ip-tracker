@@ -1,13 +1,56 @@
-<div class="container-fluid row">
-  <h3 class="col-md-12 center text-center text-light pt-5">
-    {{name}}
-  </h3>
-  <form action="" class="offset-md-3 col-md-6">
-    <div class="input-group">
-      <input type="text" class="form-control" placeholder="Enter a valid IP Address" aria-label="Enter a valid IP Address" aria-describedby="button-addon">
-      <button class="btn btn-dark" id="button-addon">
-        <svg xmlns="http://www.w3.org/2000/svg" width="11" height="14"><path fill="none" stroke="#FFF" stroke-width="3" d="M2 1l6 6-6 6"/></svg>
-      </button>
-    </div>
-  </form>
+<div class="container-fluid">
+  <div class="row">
+    <h3 class="col-md-12 text-center text-light pt-5">
+        {{name}}
+    </h3>
+    <section class="offset-md-4 col-md-4 mt-3">
+      <div class="input-group">
+        <input type="text" [(ngModel)]="ip" class="form-control" placeholder="Enter a valid IP Address" aria-label="Enter a valid IP Address" aria-describedby="button-addon" required>
+        <button (click)=getIpAddress(ip) class="btn btn-dark" id="button-addon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="14"><path fill="none" stroke="#FFF" stroke-width="3" d="M2 1l6 6-6 6"/></svg>
+        </button>
+      </div>
+    </section>
+    <section class="offset-md-2 col-md-8 mx-3 mx-md-auto">
+      <div class="row details">
+        <div class="col-sm-10 col-md">
+          <p class="pt-3">IP ADDRESS</p>
+          <h4>
+            {{IpAddress?.ip}}
+          </h4>
+        </div>
+        <div class="col-sm-10 col-md ">
+          <p class="pt-3">LOCATION </p>
+          <h4 class="row px-3">
+            <span class="md-col-5"> {{IpAddress?.location?.city}}</span>
+            <span class="md-col-5">{{IpAddress?.location?.country}}</span>
+            <span class="md-col-5">{{IpAddress?.location?.postalCode}}</span>
+          </h4>
+        </div>
+        <div class="col-sm-10 col-md">
+          <p class="pt-3">TIMEZONE</p>
+          <h4 *ngIf="IpAddress?.location?.timezone">
+             UTC {{IpAddress?.location?.timezone}}
+          </h4>
+        </div>
+        <div class="col-sm-10 col-md">
+          <p class="pt-3">ISP</p>
+          <h4>
+            {{IpAddress?.isp}}
+          </h4>
+        </div>
+      </div>
+    </section>
+  </div>
 </div>
+
+<app-map [ipLat]="IpAddress?.location?.lat"
+[ipLog]="IpAddress?.location?.lng"
+></app-map>
+
+<footer>
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="https://github.com/Caesarsage">Caesarsage</a>.
+  </div>
+</footer>
