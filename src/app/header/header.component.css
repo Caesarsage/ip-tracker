@@ -3,6 +3,36 @@
   height: 15em;
   width: auto;
 }
-.input-group{
-  /* width: 30%; */
+.details{
+  position: relative;
+  margin-top:3em;
+  z-index: 100;
+  background-color:#fff ;
+  color:hsl(0, 0%, 59%);
+  border-radius: 8px;
+}
+.details div{
+  padding-left: 1em;
+}
+.details h4{
+  color:  hsl(0, 0%, 17%);
+  font-weight: 700;
+}
+.details p{
+  color:  hsl(0, 0%, 59%);
+  font-weight: 800;
+  line-height: normal;
+}
+footer{
+  background-image: url('../../assets/pattern-bg.png');
+  height: 3em;
+  width: auto;
+}
+.attribution {
+  font-size: 20px;
+  text-align: center;
+}
+.attribution a {
+  font-style: oblique;
+  color: hsl(0, 0%, 100%);
 }
